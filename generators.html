@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coinflipper</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        /* Styling for buttons */
+        button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin: 10px;
+            font-size: 18px; /* Increased font size */
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+
+        /* Styling for headings */
+        h1, h2 {
+            color: #333;
+            font-size: 24px; /* Increased font size */
+        }
+
+        /* Styling for list items */
+        li {
+            margin-top: 20px;
+            font-size: 18px; /* Increased font size */
+        }
+
+        /* Styling for links */
+        a {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: bold;
+            font-size: 18px; /* Increased font size */
+        }
+    </style>
+</head>
+<body>
+    <div id="page1">
+        <h1>Rarity generator</h1>
+        <button onclick="generateRarity()">Generate Rarity</button>
+        <p id="demo"></p>
+        <li><a href="index.html">Return to hub</a></li>
+    </div>
+
+    <div id="page2" style="display: none;">
+        <h1>Joke Generator</h1>
+        <button onclick="generateJoke()">Generate Joke</button>
+        <li><a href="index.html">Return to hub</a></li>
+    </div>
+
+    <div id="page3" style="display: none;">
+        <h1>Silly Name Generator</h1>
+        <button onclick="generateSillyName()">Get a Silly Name</button>
+        <p id="sillyName"></p>
+        <li><a href="index.html">Return to hub</a></li>
+    </div>
+
+    <button onclick="changePage()">Change Page</button>
+
+    <script>
+        let pageNumber = 1;
+
+        function changePage() {
+            if (pageNumber == 1) {
+                document.getElementById("page1").style.display = "none";
+                document.getElementById("page2").style.display = "block";
+                pageNumber = 2;
+            } else if (pageNumber == 2) {
+                document.getElementById("page2").style.display = "none";
+                document.getElementById("page3").style.display = "block";
+                pageNumber = 3;
+            } else {
+                document.getElementById("page3").style.display = "none";
+                document.getElementById("page1").style.display = "block";
+                pageNumber = 1;
+            }
+        }
+
+        function generateRarity() {
+            var x;
+            var y = Math.floor(Math.random() * 100) + 0;
+            if (y >= 0 && y <= 49) {
+                x = "Common";
+            } else if (y >= 50 && y <= 80) {
+                x = "Uncommon";
+            } else if (y >= 81 && y <= 96) {
+                x = "Rare";
+            } else if (y >= 97 && y <= 100) {
+                x = "Ultra Rare";
+            }
+            document.getElementById("demo").innerHTML = x;
+        }
+
+        function generateJoke() {
+            var jokes = [
+                "I'm reading a book about anti-gravity. It's impossible to put down!",
+                "I used to be a banker but I lost interest.",
+"I'm glad I know sign language, it's pretty handy.",
+            "What did the grape say when it got stepped on? Nothing - but it let out a little whine!",
+            "What did the fish say when it hit the wall? 'Dam!'",
+            "Why don't scientists trust atoms? Because they make up everything!",
+            "Why did the scarecrow win the Nobel Prize? Because he was outstanding in his field.",
+            "Why did the mushroom go to the party? Because he was a fun-gi.",
+            "What did the tree say to autumn? 'Leaf me alone!'",
+            "Why don't eggs tell jokes? They'd crack each other up.",
+            "Why don't skeletons ever go out on the town? Because they don't have any body to go with.",
+            "What did the balloon say when it was let go? 'Bye, bye!'",
+            "Why did the chicken go to the séance? To get to the other side.",
+            "What did the ocean say to the beach? Nothing, it just waved.",
+            "What did the bee say to the flower? 'Buzz off!'",
+            "Why don't scientists trust atoms? Because they make up everything.",
+            "What did the judge say to the lawyer? 'I'll see you in court!'",
+            "What did the paper say to the pencil? 'Write on me!'",
+            "Why did the bicycle fall over? Because it was two tired.",
+            "What did the tree say to summer? 'Leaf me alone!'",
+            ];
+            var randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
+            alert(randomJoke);
+        }
+
+        function generateSillyName() {
+            var sillyNames = [
+                "Fidget", "Snuggles", "Cuddles", "Gizmo", "Tinkerbell", "Dora", "Boots", "Diego", "Swiper", "Rosie", "Daisy", "Sunshine", "Cheerio", "Sugar", "Spice", "Cookie", "Snickerdoodle", "Buttons", "Bows", "Ribbon", "Lace", "Tulle", "Cupcake", "Lollipop", "Bubblegum", "Gummy Bear", "Marshmallow", "Chocolate", "Vanilla", "Strawberry", "Creamsicle", "Cola", "Fizzy", "Silly", "Goofy", "Dopey", "Grumpy", "Bashful", "Sleepy", "Happy"
+                // Add more silly names here
+            ];
+            var name = sillyNames[Math.floor(Math.random() * sillyNames.length)];
+            document.getElementById("sillyName").innerHTML = name;
+        }
+    </script>
+</body>
+</html>

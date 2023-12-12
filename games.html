@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        h2 {
+            color: #666;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin: 10px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+
+        #playerScore {
+            font-size: 24px;
+            color: #333;
+        }
+
+        li {
+            margin-top: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rock Paper Scissors</h1>
+    <h2>Choose Your Element</h2>
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>
+    <h2>Your Score: <span id="playerScore">0</span></h2>
+
+    <script>
+   let playerScore = 0;
+    let highScore = 0;
+    let computerSelection;
+    
+    document.getElementById('rock').onclick = () => {
+      computerSelection = computerPlay();
+      playRound('rock', computerSelection);
+    }
+    
+    document.getElementById('paper').onclick = () => {
+      computerSelection = computerPlay();
+      playRound('paper', computerSelection);
+    }
+    
+    document.getElementById('scissors').onclick = () => {
+      computerSelection = computerPlay();
+      playRound('scissors', computerSelection);
+    }
+    
+    function computerPlay() {
+      let choices = ['rock', 'paper', 'scissors'];
+      let selection = choices[Math.floor(Math.random() * choices.length)];
+      return selection;
+    }
+    
+    function playRound(playerSelection, computerSelection) {
+      console.log(playerSelection, computerSelection);
+      if (playerSelection == 'rock') {
+        if (computerSelection == 'rock') {
+          alert('It\'s a Tie!');
+        } else if (computerSelection == 'paper') {
+          alert('You Lose!');
+          playerScore = 0;
+          document.getElementById('playerScore').innerHTML = playerScore;
+        } else {
+          alert('You Win!');
+          playerScore++;
+          document.getElementById('playerScore').innerHTML = playerScore;
+        }
+      } else if (playerSelection == 'paper') {
+        if (computerSelection == 'rock') {
+          alert('You Win!');
+          playerScore++;
+          document.getElementById('playerScore').innerHTML = playerScore;
+        } else if (computerSelection == 'paper') {
+          alert('It\'s a Tie!');
+        } else {
+          alert('You Lose!');
+          playerScore = 0;
+          document.getElementById('playerScore').innerHTML = playerScore;
+        }
+      } else {
+        if (computerSelection == 'rock') {
+          alert('You Lose!');
+          playerScore = 0;
+          document.getElementById('playerScore').innerHTML = playerScore;
+        } else if (computerSelection == 'paper') {
+          alert('You Win!');
+          playerScore++;
+          document.getElementById('playerScore').innerHTML = playerScore;
+        } else {
+          alert('It\'s a Tie!');
+        }
+      }
+      
+      if (playerScore > highScore) {
+        highScore = playerScore;
+      }
+    }
+    </script>
+
+    <!-- Add a link to return to the hub -->
+    <li><a href="index.html">Return to Hub</a></li>
+    <button onclick="window.location.href='tictactoe.html'">Tic-Tac-Toe</button>
+</body>
+</html>

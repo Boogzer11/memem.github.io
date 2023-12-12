@@ -1,0 +1,81 @@
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin: 10px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+
+        li {
+            margin-top: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: bold;
+        }
+    </style>
+
+<script>
+let pageNumber = 1;
+
+function changePage() {
+  if (pageNumber == 1) {
+    document.getElementById("page1").style.display = "none";
+    document.getElementById("page2").style.display = "block";
+    pageNumber = 2;
+  } else {
+    document.getElementById("page1").style.display = "block";
+    document.getElementById("page2").style.display = "none";
+    pageNumber = 1;
+  }
+}
+</script>
+<div id="page1">
+  <h2>Coinflipper<h2>
+   
+  <button onclick="myFunction()">Click me</button>
+
+  <p id="demo"></p>
+
+  <script>
+  function myFunction() {
+    var x;
+    var y = Math.floor(Math.random() * 100) + 1;
+    if (y>=0 && y<=49) {
+      x = "Tails";
+    } else if (y>=50 && y<=100) {
+      x = "Heads";
+    }
+    document.getElementById("demo").innerHTML = x;
+  }
+  </script>
+  <li> <a href="index.html">Return to hub</a> </li>
+</div>
+
+<div id="page2" style="display:none;">
+  <h1>Free Robux Gen</h1>
+  <button onclick="alert('You got trolled lol')">Generate robux!</button>
+  <li> <a href="index.html">Return to hub</a> </li>
+</div>
+..
+<button onclick="changePage()">Change page</button>

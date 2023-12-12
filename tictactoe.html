@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tic-Tac-Toe</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    table {
+        width: 300px;
+        height: 300px;
+    }
+    table td {
+        background: #fff;
+        border: 1px solid #000;
+        width: 100px;
+        height: 100px;
+    }
+    #score {
+        width: 300px;
+        text-align: center;
+    }
+    #score span {
+        font-size: 20px;
+    }
+    #score span.player {
+        color: blue;
+    }
+    #score span.computer {
+        color: red;
+    }
+    </style>
+</head>
+<body>
+    <div id="score">
+        <span class="player">Player Score: <span id="player">0</span></span>
+        <span class="computer">Computer Score: <span id="computer">0</span></span>
+    </div>
+    <table>
+        <tr>
+            <td id="1"></td>
+            <td id="2"></td>
+            <td id="3"></td>
+        </tr>
+        <tr>
+            <td id="4"></td>
+            <td id="5"></td>
+            <td id="6"></td>
+        </tr>
+        <tr>
+            <td id="7"></td>
+            <td id="8"></td>
+            <td id="9"></td>
+        </tr>
+    </table>
+    <script>
+    let playerScore = 0;
+    let computerScore = 0;
+    let playerTurn = true;
+    let playerSymbol = 'X';
+    let computerSymbol = 'O';
+
+    document.querySelectorAll('td').forEach(box => {
+        box.addEventListener('click', () => {
+            if(box.innerHTML === '') {
+                if(playerTurn) {
+                    box.innerHTML = playerSymbol;
+                    playerTurn = false;
+                    checkWin();
+                    computerTurn();
+                }
+            }
+        })
+    });
+
+    const checkWin = () => {
+        let winCombos = [[1,2,3], [4,5,6], [7,8,9], [1,4,7], [2,5,8], [3,6,9], [1,5,9], [3,5,7]];
+        let boardValues = [];
+        document.querySelectorAll('td').forEach(box => {
+            boardValues.push(box.innerHTML);
+        });
+
+        winCombos.forEach(combo => {
+            if (boardValues[combo[0]-1] === boardValues[combo[1]-1] && boardValues[combo[1]-1] === boardValues[combo[2]-1] && boardValues[combo[0]-1] != '') {
+                if (playerTurn === false) {
+                    playerScore++;
+                    document.getElementById('player').innerHTML = playerScore;
+                    alert('Player Wins!');
+                    resetGame();
+                } else {
+                    computerScore++;
+                    document.getElementById('computer').innerHTML = computerScore;
+                    alert('Computer Wins!');
+                    resetGame();
+                }
+            }
+        })
+    }
+
+    const computerTurn = () => {
+        let boardValues = [];
+        document.querySelectorAll('td').forEach(box => {
+            boardValues.push(box.innerHTML);
+        });
+        let move = Math.floor(Math.random() * 9) + 1;
+        if (boardValues[move-1] === '') {
+            document.getElementById(move).innerHTML = computerSymbol;
+            playerTurn = true;
+            checkWin();
+        } else {
+            computerTurn();
+        }
+    }
+
+    const resetGame = () => {
+        document.querySelectorAll('td').forEach(box => {
+            box.innerHTML = '';
+        });
+    }
+    </script>
+    <style>
+    button {
+        background-color: #3498db;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        margin: 10px;
+    }
+
+    button:hover {
+        background-color: #2980b9;
+        transform: scale(1.05);
+    }
+    </style>
+</body>
+</html>
+
+<div id="button-container">
+    <button onclick="resetGame()">Click me to reset</button>
+    
+    <button onclick="window.location.href='games.html'">Rock Paper Scissors</button>
+</div>
