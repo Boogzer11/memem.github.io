@@ -1,37 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memeplace Hub</title>
     <style>
+        /* Global styles */
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f2f2f2;
-        }
-
-        #hub {
-            margin-top: 100px;
-        }
-
-        h1 {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             color: #333;
         }
 
+        #hub {
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        /* List and link styles */
         ul {
             list-style: none;
             padding: 0;
+            margin: 0;
         }
 
         li {
             margin-top: 20px;
-            font-size: 18px;
+            font-size: 20px;
+            transition: all 0.3s ease;
         }
 
         a {
             text-decoration: none;
             color: #3498db;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 20px;
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s ease;
         }
 
         /* Icon styles */
@@ -40,6 +60,23 @@
             height: 32px;
             margin-right: 10px;
             vertical-align: middle;
+        }
+
+        /* Hover and click effects */
+        a:hover {
+            background-color: #3498db;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        a:active {
+            background-color: #2980b9;
+            transform: scale(0.98);
+        }
+
+        li:hover {
+            background-color: #ecf0f1;
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -61,5 +98,10 @@
             </li>
         </ul>
     </div>
+
+    <!-- Optional PHP server integration -->
+    <?php
+        // You can place PHP code here if needed for backend interaction
+    ?>
 </body>
 </html>
